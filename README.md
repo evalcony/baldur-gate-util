@@ -114,23 +114,24 @@ dict.txt文件中定义
 ### 版本记录
 
 v0.3.5
+- 实现 Lock 语法
 - 实现 between 语法
 - 修复若干 bug
 
 v0.3.4
-- 实现宏命令
+- 实现宏命令 MacroFunction
 - 优化宏命令，简化语法
 - 修复模板解析的 bug
 
 v0.3.3
-- 实现 OR 语法功能。
-- 修复 OR 语句和 if 语句、@loop 语句的兼容问题。
+- 实现 OR 语法 OrFunction。
+- 修复 OR 语句和 if 语句、loop 语句的兼容问题。
 
 v0.3.2
-- 实现 if 语法功能。
+- 实现 if 语法 IfFunction。
 
 v0.3.1
-- 实现 loop 语法功能。
+- 实现 loop 语法 LoopFunction。
 
 v0.2
 - 实现模板脚本替换。
