@@ -1,0 +1,5 @@
+// 原生命令
+
+LevelGT
+See
+NumInPartyGT

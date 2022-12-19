@@ -1,0 +1,106 @@
+// 宏不支持宏嵌套宏，但支持对其他语法的嵌套，如OR()
+
+$timer(name,time) SetGlobalTimer(name,"LOCALS",time)
+$exist(name) GlobalTimerNotExpired(name,"LOCALS")
+$expired(name) !GlobalTimerNotExpired(name,"LOCALS")
+
+$incr(name,val) IncrementGlobal(name,"LOCALS",val)
+$eq(name,val) Global(name,"LOCALS",val)
+$set(name,time) SetGlobal(name,"LOCALS",time)
+
+$cast(obj,spell) SpellCast(obj,spell)
+
+// 常用数值比较
+$gt(obj,val) NumCreatureGT(obj, val)
+$lt(obj,val) NumCreatureLT(obj, val)
+$hpgt(obj,val) HPGT(obj,val)
+$hplt(obj,val) HPLT(obj,val)
+$hppgt(obj,val) HPPercentGT(obj,val)
+$hpplt(obj,val) HPPercentLT(obj,val)
+$randgt(v1, v2) RandomNumGT(v1,v2)
+
+$display(val) DisplayString(Myself,val)
+
+$run(obj,val) RunAwayFrom(obj,val)
+$move(x,y) MoveToOffset([x.y])
+$chapter(val) Global("Chapter","GLOBAL",val)
+$range(obj,val) Range(obj,val)
+$c() Continue()
+
+// StateCheck 系列
+$state(obj,st) StateCheck(obj,st)
+$无助(obj) StateCheck(obj,STATE_DISABLED)
+$正常(obj) StateCheck(obj,STATE_NORMAL)
+$非正常(obj) !StateCheck(obj,STATE_NORMAL)
+$睡眠(obj) StateCheck(obj,STATE_SLEEPING)
+$未睡眠(obj) !StateCheck(obj,STATE_SLEEPING)
+$高隐(obj) StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
+$未高隐(obj) !StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
+$沉默(obj) StateCheck(obj,STATE_SILENCED)
+$未沉默(obj) !StateCheck(obj,STATE_SILENCED)
+$祝福(obj) StateCheck(obj,STATE_BLESS)
+$加速(obj) StateCheck(obj,STATE_HASTED)
+$昏迷(obj) StateCheck(obj,STATE_STUNNED)
+$未昏迷(obj) !StateCheck(obj,STATE_STUNNED)
+$镜影(obj) StateCheck(obj,STATE_MIRRORIMAGE)
+$无镜影(obj) !StateCheck(obj,STATE_MIRRORIMAGE)
+$定身(obj) StateCheck(obj,STATE_IMMOBILE)
+
+// CheckState系列
+$checkGT(obj,val,item) CheckStatGT(obj,val,item)
+$checkLT(obj,val,item) CheckStatLT(obj,val,item)
+$!check(obj,val,item) !CheckStat(obj,val,item)
+$checkSpell(obj,item) CheckSpellState(obj,item)
+$!checkSpell(obj,item) !CheckSpellState(obj,item)
+$高加(obj) CheckStatGT(obj,0,IMPROVEDHASTE)
+$无高加(obj) !CheckStatGT(obj,0,IMPROVEDHASTE)
+$石皮(obj) CheckStatGT(obj,0,STONESKINS)
+$无石皮(obj) !CheckStatGT(obj,0,STONESKINS)
+$真视(obj) CheckStatGT(obj,0,TRUE_SIGHT)
+$无真视(obj) !CheckStatGT(obj,0,TRUE_SIGHT)
+$防魔武(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+$无防魔武(obj) !CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+$无防护魔法能量(obj) CheckStatLT(obj,31,MAGICDAMAGERESISTANCE)
+
+$!race(obj,rname) !Race(obj,rname)
+
+$magiclt(obj,val) CheckStatLT(obj,val,RESISTMAGIC)
+$eleclt(obj,val) CheckStatLT(obj,val,RESISTELECTRICITY)
+$firelt(obj,val) CheckStatLT(obj,val,RESISTFIRE)
+$attackgt(obj,val) CheckStatGT(obj,val,NUMBEROFATTACKS)
+$魔抗lt(obj,val) CheckStatLT(obj,val,RESISTMAGIC)
+$电抗lt(obj,val) CheckStatLT(obj,val,RESISTELECTRICITY)
+$火抗lt(obj,val) CheckStatLT(obj,val,RESISTFIRE)
+// 默认val=55
+$酸抗lt(obj,val) CheckStatLT(obj,val,RESISTACID)
+$伤害gt(obj,val) CheckStatGT(obj,val,NUMBEROFATTACKS)
+$魔抗gt(obj,val) CheckStatGT(obj,val,RESISTMAGIC)
+
+
+// 常用组合
+$法术防护(obj) OR(HasBounceEffects(obj) || HasImmunityEffects(obj))
+$缺法术防护(obj) !HasBounceEffects(obj) && !HasImmunityEffects(obj)
+$优先级敌人(obj) OR(See(obj([ENEMY])) || See(obj([0.0.0.CLERIC_ALL])) || See(obj([0.0.0.MAGE_ALL])) || See(obj([0.0.0.SORCERER])))
+$正常施法(obj) CheckStatLT(obj,50,SPELLFAILUREMAGE) && !CheckStatGT(obj,0,CLERIC_INSECT_PLAGUE) && !StateCheck(obj,STATE_SILENCED)
+$干扰施法(obj) OR(CheckStatGT(obj,30,SPELLFAILUREMAGE) || CheckStatGT(obj,0,CLERIC_INSECT_PLAGUE) || StateCheck(obj,STATE_SILENCED))
+// WIZARD_SPELL_IMMUNITY 数值含义
+//  1-防护系
+//	2-咒法/召唤系
+//	3-预言系
+//	4-附魔/魅惑系
+//	5-幻术/魅影系
+//	6-塑能系
+//	7-死灵系
+//	8-改变系
+$法术防护(obj,val) !CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION) && !CheckStatGT(obj,1,WIZARD_SPELL_TURNING) && !CheckStatGT(obj,0,WIZARD_SPELL_TRAP) && !CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS) && !CheckStat(obj,val,WIZARD_SPELL_IMMUNITY)
+$看见召唤物(val) OR(See([EVILCUTOFF.0.0.0.0.SUMMONED]) || See([EVILCUTOFF.WEAPON.SWORD.0.0.SUMMONED]) || See([EVILCUTOFF.0.MIST.0.0.SUMMONED]) || NumCreatureGT([EVILCUTOFF.0.0.0.0.SUMMONED],val))
+$看见法系敌人() OR(See(NearestEnemyOfType([0.0.0.MAGE_ALL])) || See(NearestEnemyOfType([0.0.0.CLERIC_ALL])) ||See(NearestEnemyOfType([0.0.0.BARD_ALL])) ||See(NearestEnemyOfType([0.0.0.DRUID_ALL])))
+$可驱散(obj) OR(StateCheck(obj,STATE_HASTED)||StateCheck(obj,STATE_MIRRORIMAGE)||CheckStatGT(obj,0,TRUE_SIGHT)||CheckStatGT(obj,0,STONESKINS)||CheckSpellState(obj,RESIST_FEAR)||CheckStatGT(obj,0,CLERIC_DEFENSIVE_HARMONY)||CheckStatGT(obj,0,CLERIC_CHAOTIC_COMMANDS)||CheckStatGT(obj,0,CLERIC_FREE_ACTION)||CheckStatGT(obj,0,WIZARD_FIRE_SHIELD)||CheckStatGT(obj,0,DEFENSIVE_MODIFIER)||CheckStatGT(obj,0,STRENGTH_MODIFIER))
+
+// SSS级敌人
+$SSSrace(obj) OR(Race([DRAGON]) || Race([LICH]) || Race([DEMONIC] || Race([BEHOLDER])))
+$SSShp(obj) HPGT(obj,200)
+
+// S级敌人
+$Shp(obj) HPGT(obj,120)
+$Sgt(obj) NumCreatureGT(obj,3)

@@ -1,0 +1,14 @@
+//代码块-法术定序+蛛网+2火球
+
+if (See(@NEM) && $eq("seq_web_fb",0) && have(@法术定序) && have(@火球术) && have(@蛛网)) {
+    #100
+    $display(39969)
+    @remove(@法术定序)
+    @RFS(@NEM,@蛛网)
+    @remove(@蛛网)
+    @RFS(@NEM,@火球术)
+    @remove(@火球术)
+    @RFS(@NEM,@火球术)
+    @remove(@火球术)
+    $incr("seq_web_fb",1)
+}

@@ -1,0 +1,12 @@
+// 法术定序+3骷髅
+
+if (@看见敌人 && have(@法术定序) && $eq("seq_3bone",0) && have(@骷髅陷阱)) {
+    #100
+    $display(39969)
+    @remove(@法术定序)
+    loop(i,1,3) {
+        @RFS(@last(@m),@骷髅陷阱)
+        @remove(@骷髅陷阱)
+    }
+    $incr("seq_3bone",1)
+}

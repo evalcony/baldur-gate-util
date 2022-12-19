@@ -1,0 +1,8 @@
+// 真视破幻影
+
+if (OR(Gender(@last,@拟象) || SpellCast([ENEMY],@投影) || SpellCast([ENEMY],@误导) || StateCheck(@last,@朦胧) || StateCheck(@last,@镜影)) && $exist("TrueSight")) {
+    #100
+    $timer("TrueSight",FIVE_ROUNDS)
+    @FS(@m,@真视)
+}
+

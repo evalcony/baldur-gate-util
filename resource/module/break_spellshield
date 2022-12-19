@@ -1,0 +1,39 @@
+// 破解法术护盾
+
+loop(i,1,6) {
+    if ($eq("shield_<i>", 1) && have(@法穿)) {
+        #100
+        @S(@<i>NOM,@法穿)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@密言)) {
+        #100
+        @S(@<i>NOM,@密言)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@识破魔法)) {
+        #100
+        @S(@<i>NOM,@识破魔法)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@识破护盾)) {
+        #100
+        @S(@<i>NOM,@识破护盾)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@红宝石)) {
+        #100
+        @S(@<i>NOM,@红宝石)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@凯尔本)) {
+        #100
+        @S(@<i>NOM,@凯尔本)
+        $set("shield_<i>", 0)
+    }
+    if ($eq("shield_<i>", 1) && have(@法术重击)) {
+        #100
+        @S(@<i>NOM,@法术重击)
+        $set("shield_<i>", 0)
+    }
+}

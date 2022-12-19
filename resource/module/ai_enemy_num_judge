@@ -1,0 +1,20 @@
+// 敌人数量判断-------------
+// namespace = num_analyse
+// -> num_multy
+// -> num_uni
+
+// 敌人多
+if ($expired("num_analyse") && $gt([ENEMY],2)) {
+    #100
+    $timer("num_analyse",TWO_ROUNDS)
+    $timer("num_multy",TWO_ROUNDS)
+    $c()
+}
+
+// 敌人少
+if ($expired("num_analyse") && $lt([ENEMY],3)) {
+    #100
+    $timer("num_analyse",TWO_ROUNDS)
+    $timer("num_uni",TWO_ROUNDS)
+    $c()
+}

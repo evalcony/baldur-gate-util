@@ -1,0 +1,17 @@
+// ai-清理场上召唤物
+// namespace = clear_summon
+
+if (See(@召唤物)) {
+    #100
+    // $timer("clear_summon", ONE_ROUND)
+}
+
+if ($exist("clear_summon") && $randgt(20,10)) {
+    #100
+    @RFS(@1NOM, @死亡之雾)
+}
+
+if ($exist("clear_summon")) {
+    #100
+    @RFS(@1NOM, @死亡术)
+}

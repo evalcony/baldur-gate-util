@@ -1,0 +1,42 @@
+// ai-敌人多时情况
+
+// 控场+AOE namepace = area_control, aoe
+if ($exist("num_multy") && $expired("area_control")) {
+    #100
+    @RFS(@2NOM, @蛛网)
+    $timer("area_control", FIVE_ROUNDS)
+    wait(2)
+}
+
+if ($exist("num_multy") && $exist("area_control") && $expired("aoe")) {
+    #100
+    $timer("aoe", TWO_ROUNDS);
+}
+
+if ($exist("aoe") && have(@凋死)) {
+    #100
+    @RFS(@1NOM, @凋死)
+    @remove(@凋死)
+    wait(2)
+}
+
+if ($exist("aoe") && have(@焚云)) {
+    #100
+    @RFS(@1NOM, @焚云)
+    @remove(@焚云)
+    wait(2)
+}
+
+if ($exist("aoe") && have(@日焰)) {
+    #100
+    @RFS(@1NOM, @日焰)
+    @remove(@日焰)
+    wait(2)
+}
+
+if ($exist("aoe") && have(@骷髅陷阱)) {
+    #100
+    @RFS(@1NOM, @骷髅陷阱)
+    @remove(@日焰)
+    wait(2)
+}

@@ -1,0 +1,6 @@
+IF
+CheckStatGT(Myself,0,WIZARD_SPELL_SHIELD)
+THEN
+    RESPONSE #100
+    RandomWalk()
+END
