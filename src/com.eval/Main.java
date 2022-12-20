@@ -26,6 +26,7 @@ public class Main {
         // 加载脚本
         SourceProccessor.read(container, inputPath);
         // 翻译脚本
+//        Translator.getInstance().translate(container);
         Translator.getInstance().translate(container);
         // 输出脚本
         SourceProccessor.write(container, outputPath);

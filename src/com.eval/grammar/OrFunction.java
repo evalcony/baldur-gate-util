@@ -6,7 +6,13 @@ import com.eval.util.LineUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+// or 需要写成单独一行
 public class OrFunction extends AbstractFunction {
+
+    @Override
+    public String getName() {
+        return "or";
+    }
 
     @Override
     boolean check(Container container, int startIndex) throws Exception {
@@ -14,7 +20,7 @@ public class OrFunction extends AbstractFunction {
             return false;
         }
         // 判断简单一点，不检查语法错误，只看是否有判断标志
-        return (container.rawLines.get(startIndex).contains("OR("));
+        return (container.rawLines.get(startIndex).startsWith("OR("));
     }
 
     @Override

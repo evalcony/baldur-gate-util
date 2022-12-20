@@ -18,6 +18,11 @@ import java.util.*;
 public class MacroCmdFunction extends AbstractFunction {
 
     @Override
+    public String getName() {
+        return "macro";
+    }
+
+    @Override
     boolean check(Container container, int startIndex) throws Exception {
         return container.rawLines.get(startIndex).contains("$");
     }

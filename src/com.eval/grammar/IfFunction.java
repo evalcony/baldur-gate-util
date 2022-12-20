@@ -15,11 +15,16 @@ public class IfFunction extends AbstractFunction {
      */
 
     @Override
+    public String getName() {
+        return "if";
+    }
+
+    @Override
     boolean check(Container container, int startIndex) throws Exception {
         if (container == null || container.rawLines == null || container.rawLines.isEmpty() || startIndex >= container.rawLines.size()) {
             return false;
         }
-        if (!container.rawLines.get(startIndex).contains("if")) {
+        if (!container.rawLines.get(startIndex).startsWith("if")) {
             return false;
         }
         return true;

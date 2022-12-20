@@ -1,0 +1,27 @@
+// 敌人可见性判断
+
+loop(i,1,6) {
+    if (@看见敌人 && $eq("visiable_<i>",0) && $未隐形(@<i>NOM) && $未高隐(@<i>NOM)) {
+        #100
+        $set("visiable_<i>",1)
+        $display(1)
+        $c()
+    }
+}
+
+if (OR($eq("visiable_1",1) || $eq("visiable_2",1) || $eq("visiable_3",1)
+|| $eq("visiable_4",1) || $eq("visiable_5",1) || $eq("visiable_6",1))
+) {
+    #100
+    $set("visiable_atleast",1)
+    $display(2)
+    $c()
+}
+
+if ($eq("visiable_1",1) && $eq("visiable_2",1) && $eq("visiable_3",1)
+&& $eq("visiable_4",1) && $eq("visiable_5",1) && $eq("visiable_6",1)) {
+    #100
+    $set("visiable_all",1)
+    $display(3)
+    $c()
+}

@@ -9,6 +9,11 @@ import java.util.List;
 // between(obj, left, right)
 public class BetweenFunction extends AbstractFunction {
     @Override
+    public String getName() {
+        return "between";
+    }
+
+    @Override
     boolean check(Container container, int startIndex) throws Exception {
         return container.rawLines.get(startIndex).contains("between(") && container.rawLines.get(startIndex).contains(")");
     }

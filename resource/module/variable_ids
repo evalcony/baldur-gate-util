@@ -1,0 +1,8 @@
+// 状态变量表
+
+visiable_<i> 第i个可见 eq=1
+visiable_atleast 至少有1个可见 eq=1
+visiable_all 全都可见 eq=1
+
+// timer变量表
+true_visual 真视

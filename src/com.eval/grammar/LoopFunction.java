@@ -24,6 +24,11 @@ public class LoopFunction extends AbstractFunction {
      */
 
     @Override
+    public String getName() {
+        return "loop";
+    }
+
+    @Override
     boolean check(Container container, int startIndex) throws Exception {
         if (container == null)
             return false;
@@ -31,7 +36,7 @@ public class LoopFunction extends AbstractFunction {
         if (rawLine == null || rawLine.isEmpty() || startIndex >= rawLine.size()) {
             return false;
         }
-        if (!rawLine.get(startIndex).contains("loop")) {
+        if (!rawLine.get(startIndex).startsWith("loop")) {
             return false;
         }
         paramList = new ArrayList<>();

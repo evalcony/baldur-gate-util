@@ -7,6 +7,11 @@ import com.eval.Container;
 // list 中用占位符<name> 表示
 public class InFunction extends AbstractFunction {
     @Override
+    public String getName() {
+        return "in";
+    }
+
+    @Override
     boolean check(Container container, int startIndex) throws Exception {
         return false;
     }
