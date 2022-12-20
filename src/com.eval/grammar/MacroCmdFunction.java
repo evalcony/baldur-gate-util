@@ -3,7 +3,9 @@ package com.eval.grammar;
 import com.eval.Container;
 import com.eval.util.SourceProccessor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // 宏命令
 /*
@@ -54,7 +56,7 @@ public class MacroCmdFunction extends AbstractFunction {
             System.out.println(container.rawLines.get(startIndex));
         }
         List<String> listP = findMacroParamList(macroCmdBlock); // 占位符列表
-        for (int i = 0; i < listP.size(); ++i) {
+        for (int i = 0; listV != null && listV.size() > 0 && i < listP.size(); ++i) {
             macroReplaceBlock = macroReplaceBlock.replace(listP.get(i), listV.get(i));
         }
         container.rawLines.set(startIndex, macroReplaceBlock);
@@ -85,6 +87,9 @@ public class MacroCmdFunction extends AbstractFunction {
 
         List<String> paramList = new ArrayList<>();
         String sentence = macroCmd.substring(lBracketPos+1, rBracketPos);
+        if ("".equals(sentence)) {
+            return Collections.emptyList();
+        }
 
         String[] params = sentence.split(",");
         for (int i = 0; i < params.length; ++i) {
@@ -102,6 +107,9 @@ public class MacroCmdFunction extends AbstractFunction {
         List<String> valueList = new ArrayList<>();
         String sentence = macroCmd.substring(lBracketPos+1, rBracketPos);
 
+        if ("".equals(sentence)) {
+            return Collections.emptyList();
+        }
         String[] values = sentence.split(",");
         for (int i = 0; i < values.length; ++i) {
             valueList.add(values[i].trim());

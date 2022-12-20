@@ -4,7 +4,7 @@ loop(i,1,6) {
     if (@看见敌人 && $eq("visiable_<i>",0) && $未隐形(@<i>NOM)) {
         #100
         $set("visiable_<i>",1)
-        $display(@m,1)
+        $display(1)
         $c()
     }
 }

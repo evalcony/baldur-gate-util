@@ -1,4 +1,6 @@
 // 宏支持宏嵌套宏，也支持对其他语法的嵌套，如OR()
+$测试() OR($普隐(@1NOM) || $高隐(@1NOM) || $普隐(@2NOM) || $高隐(@2NOM))
+
 
 $timer(name,time) SetGlobalTimer(name,"LOCALS",time)
 $exist(name) GlobalTimerNotExpired(name,"LOCALS")
@@ -39,8 +41,9 @@ $高隐(obj) StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
 $未高隐(obj) !StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
 $普隐(obj) StateCheck(obj,STATE_INVISIBLE)
 $未普隐(obj) !StateCheck(obj,STATE_INVISIBLE)
-$隐形(obj) OR(StateCheck(obj,STATE_IMPROVEDINVISIBILITY) || StateCheck(obj,STATE_INVISIBLE))
+$隐形(obj) StateCheck(obj,STATE_INVISIBLE) || StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
 $未隐形(obj) !StateCheck(obj,STATE_IMPROVEDINVISIBILITY) && !StateCheck(obj,STATE_INVISIBLE)
+$敌方全体隐形判断() OR($普隐(@1NOM) || $高隐(@1NOM) || $普隐(@2NOM) || $高隐(@2NOM) || $普隐(@3NOM) || $高隐(@3NOM) || $普隐(@4NOM) || $高隐(@4NOM) || $普隐(@5NOM) || $高隐(@5NOM) || $普隐(@6NOM) || $高隐(@6NOM))
 $沉默(obj) StateCheck(obj,STATE_SILENCED)
 $未沉默(obj) !StateCheck(obj,STATE_SILENCED)
 $祝福(obj) StateCheck(obj,STATE_BLESS)
