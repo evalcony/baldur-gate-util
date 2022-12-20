@@ -1,17 +1,16 @@
 // ai-清理场上召唤物
-// namespace = clear_summon
 
-if (See(@召唤物)) {
+if ($看见召唤物(2) && $expired("clear_summon")) {
     #100
     $timer("clear_summon", ONE_ROUND)
+    $c()
 }
 
-if ($exist("clear_summon") && $randgt(20,10)) {
-    #100
-    @RFS(@1NOM, @死亡之雾)
-}
-
-if ($exist("clear_summon")) {
-    #100
-    @RFS(@1NOM, @死亡术)
+foreach(spl,[@死亡之雾,@死亡术]) {
+    if ($exist("clear_summon") && $randgt(20,10) && have(<spl>)) {
+        #100
+        lock{
+            @S(@1NOM,<spl>)
+        }
+    }
 }

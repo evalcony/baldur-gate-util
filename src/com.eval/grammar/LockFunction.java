@@ -2,17 +2,18 @@ package com.eval.grammar;
 
 import com.eval.Container;
 
+/**
+ lock {
+ ...
+ }
+ 效果: 保护lock中间代码块不被打断。
+ */
 public class LockFunction extends AbstractFunction {
     @Override
     public String getName() {
         return "lock";
     }
 
-    /**
-     lock {
-        ...
-     }
-     */
     @Override
     boolean check(Container container, int startIndex) throws Exception {
         if (container.rawLines.get(startIndex).startsWith("lock {") || container.rawLines.get(startIndex).startsWith("lock{"))
