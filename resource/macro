@@ -23,7 +23,7 @@ $randgt(v1,v2) RandomNumGT(v1,v2)
 
 $display(val) DisplayString(Myself,val)
 
-$敌对(obj) Allegiance(obj,ENEMY)
+$敌对() Allegiance(Myself,ENEMY)
 $run(obj,val) RunAwayFrom(obj,val)
 $move(x,y) MoveToOffset([x.y])
 $chapter(val) Global("Chapter","GLOBAL",val)

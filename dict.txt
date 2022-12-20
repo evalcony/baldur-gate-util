@@ -25,7 +25,12 @@ have HaveSpell
 @4NOM FourthNearestEnemyOf(Myself)
 @5NOM FifthNearestEnemyOf(Myself)
 @6NOM SixthNearestEnemyOf(Myself)
-@NOT NearestEnemyOfType
+@1NOT NearestEnemyOfType
+@2NOT SecondNearestEnemyOfType
+@3NOT ThirdNearestEnemyOfType
+@4NOT FourthNearestEnemyOfType
+@5NOT FifthNearestEnemyOfType
+@6NOT SixthNearestEnemyOfType
 @发声 WIZARD_VOCALIZE
 @加速 WIZARD_HASTE
 @高加 WIZARD_IMPROVED_HASTE
@@ -102,6 +107,8 @@ have HaveSpell
 @法免改变 WIZARD_SPELL_IMMUNITY_ALTERATION
 @朦胧 WIZARD_BLUR
 @镜影 WIZARD_MIRROR_IMAGE
+@隐形术 WIZARD_INVISIBILITY
+@高隐 WIZARD_IMPROVED_INVISIBILITY
 @暗影门 WIZARD_SHADOW_DOOR
 @误导 WIZARD_MISLEAD
 @拟象 WIZARD_SIMULACRUM

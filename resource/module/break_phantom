@@ -1,24 +1,9 @@
-// 真视破幻影
 
-if ($expired("true_visual") && OR(Gender(@last,@拟象) || SpellCast([ENEMY],@投影) || SpellCast([ENEMY],@误导) || StateCheck(@last,@朦胧) || StateCheck(@last,@镜影)) && $exist("TrueSight")) {
-    #100
-    @FS(@m,@真视)
-    $timer("true_visual",FIVE_ROUNDS)
-}
-
-IF
-    Allegiance(Myself,ENEMY)
-    HaveSpell(WIZARD_TRUE_SIGHT)  // SPWI609.SPL (真实视域)
-    OR(5)
-        SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_MISLEAD)  // SPWI607.SPL (误导术)
-        SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_SHADOW_DOOR)  // SPWI505.SPL (暗影门)
-        SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_PROJECT_IMAGE)  // SPWI703.SPL (投影术)
-        SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_INVISIBILITY)  // SPWI206.SPL (隐形术)
-        SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (高等隐形术)
-THEN
-    RESPONSE #100
-        Spell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (真实视域)
-
-if ($敌对(@m) && OR($cast(@1NOT([0.0.0.MAGE_ALL]),@误导) || $cast(@1NOT([0.0.0.MAGE_ALL]),@暗影门) || $cast(@1NOT([0.0.0.MAGE_ALL]),@投影) || $cast(@1NOT([0.0.0.MAGE_ALL]),@隐形) ||  $cast(@1NOT([0.0.0.MAGE_ALL]),@高隐) || $cast(@1NOT([0.0.0.MAGE_ALL]),@拟象) || $cast(@1NOT([0.0.0.MAGE_ALL]),@镜影))) {
-
+loop(i,1,4){
+    if (@看见敌人 && $expired("true_visual") && have(@真视) && OR($cast(@<i>NOT([0.0.0.MAGE_ALL]),@误导) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@暗影门) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@投影) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@隐形术) ||  $cast(@<i>NOT([0.0.0.MAGE_ALL]),@高隐) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@拟象) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@镜影))) {
+        #100
+        lock{
+            @S(@m, @真视)
+        }
+    }
 }
