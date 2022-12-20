@@ -17,7 +17,6 @@ public class Translator {
             new BetweenFunction(),
             new LockFunction(),
     };
-//    private static MacroCmdGrammar macroCmdGrammar = new MacroCmdGrammar();
 
     private static Translator instance = new Translator();
 
@@ -91,66 +90,6 @@ public class Translator {
             e.printStackTrace();
         }
     }
-
-
-    //--------------------
-
-//    public void translatex(Container container) {
-//        for (int i = 0; i < container.rawLines.size(); ++i) {
-//            transGrammarToRaw(container);
-//            transModuleToRaw(container);
-//            transRawToScript(container);
-//        }
-//    }
-//
-//    /**
-//     * 将包含grammar语法的语句翻译为略缩代码
-//     * @param container
-//     */
-//    private void transGrammarToRaw(Container container) {
-//        try {
-//            boolean flag = true;
-//            for (int j = 0; j < functions.length; ++j) {
-//                for (int i = 0; i < container.rawLines.size(); ++i) {
-//                    functions[j].grammerToRaw(container, i);
-//                    flag = true;
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // 包含模板的翻译
-//    /**
-//     * 把包含 ~模板 解析成raw代码
-//     * @param container
-//     */
-//    private void transModuleToRaw(Container container) {
-//        for (int i = 0; i < container.rawLines.size(); ++i) {
-//            String line = container.rawLines.get(i);
-//            // 将模板代号替换为模板代码
-//            if (line.contains("~")) {
-//                String moduleName = SourceProccessor.getDict().get(line.trim());
-//                Container moduleContainer = SourceProccessor.getModuleDict().get(moduleName);
-//                if (moduleContainer == null)
-//                    continue;
-//                Translator.getInstance().translate(moduleContainer);
-//                container.rawLines = LineUtils.replacePosLine(container.rawLines, moduleContainer.rawLines, i);
-//            }
-//        }
-//    }
-//
-//    // 将略缩代码翻译为脚本script代码
-//    private void transRawToScript(Container container) {
-//        try {
-//            for (int i = 0; i < container.rawLines.size(); ++i) {
-//                container.resLines.add(repl(container.rawLines.get(i)));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     private String repl(String source) {
         String line = source;

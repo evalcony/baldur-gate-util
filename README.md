@@ -67,7 +67,7 @@ dict.txt文件中定义
 
 ~法术定序3火球 seq3fireball
 
-则程序会在resource目录下找文件名为seq3fireball的代码块，并替换任何脚本中出现的 $法术定序3火球$
+则程序会在resource目录下找文件名为seq3fireball的代码块，并替换任何脚本中出现的 ~法术定序3火球
 这一段。注意大小写。
 ```
 
@@ -87,12 +87,19 @@ dict.txt文件中定义
 
 下面展示一个宏命令的示例：
 
+```
 在 macro 文件中定义宏：
-    $LTimer(p1,p2) SetGlobalTimer(p1,"LOCALS",p2)
+
+    $timer(p1,p2) SetGlobalTimer(p1,"LOCALS",p2)
+
 在脚本代码文件中写如下代码：
-    $LTimer(a,b)
+
+    $timer(a,b)
+
 解析结果：
+
     SetGlobalTimer(a,"LOCALS",b)
+```
 
 8. 资源加载顺序
 
