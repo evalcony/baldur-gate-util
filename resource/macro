@@ -21,6 +21,7 @@ $randgt(v1, v2) RandomNumGT(v1,v2)
 
 $display(val) DisplayString(Myself,val)
 
+$敌对(obj) Allegiance(obj,ENEMY)
 $run(obj,val) RunAwayFrom(obj,val)
 $move(x,y) MoveToOffset([x.y])
 $chapter(val) Global("Chapter","GLOBAL",val)
@@ -36,6 +37,8 @@ $睡眠(obj) StateCheck(obj,STATE_SLEEPING)
 $未睡眠(obj) !StateCheck(obj,STATE_SLEEPING)
 $高隐(obj) StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
 $未高隐(obj) !StateCheck(obj,STATE_IMPROVEDINVISIBILITY)
+$隐形(obj) OR(StateCheck(obj,STATE_IMPROVEDINVISIBILITY) || StateCheck(obj,STATE_INVISIBLE))
+$未隐形(obj) !StateCheck(obj,STATE_IMPROVEDINVISIBILITY) && !StateCheck(obj,STATE_INVISIBLE)
 $沉默(obj) StateCheck(obj,STATE_SILENCED)
 $未沉默(obj) !StateCheck(obj,STATE_SILENCED)
 $祝福(obj) StateCheck(obj,STATE_BLESS)
@@ -78,7 +81,7 @@ $魔抗gt(obj,val) CheckStatGT(obj,val,RESISTMAGIC)
 
 
 // 常用组合
-$法术防护(obj) OR(HasBounceEffects(obj) || HasImmunityEffects(obj))
+$法免效果(obj) OR(HasBounceEffects(obj) || HasImmunityEffects(obj))
 $缺法术防护(obj) !HasBounceEffects(obj) && !HasImmunityEffects(obj)
 $优先级敌人(obj) OR(See(obj([ENEMY])) || See(obj([0.0.0.CLERIC_ALL])) || See(obj([0.0.0.MAGE_ALL])) || See(obj([0.0.0.SORCERER])))
 $正常施法(obj) CheckStatLT(obj,50,SPELLFAILUREMAGE) && !CheckStatGT(obj,0,CLERIC_INSECT_PLAGUE) && !StateCheck(obj,STATE_SILENCED)
@@ -95,6 +98,7 @@ $干扰施法(obj) OR(CheckStatGT(obj,30,SPELLFAILUREMAGE) || CheckStatGT(obj,0,
 $法术防护(obj,val) !CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION) && !CheckStatGT(obj,1,WIZARD_SPELL_TURNING) && !CheckStatGT(obj,0,WIZARD_SPELL_TRAP) && !CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS) && !CheckStat(obj,val,WIZARD_SPELL_IMMUNITY)
 $看见召唤物(val) OR(See([EVILCUTOFF.0.0.0.0.SUMMONED]) || See([EVILCUTOFF.WEAPON.SWORD.0.0.SUMMONED]) || See([EVILCUTOFF.0.MIST.0.0.SUMMONED]) || NumCreatureGT([EVILCUTOFF.0.0.0.0.SUMMONED],val))
 $看见法系敌人() OR(See(NearestEnemyOfType([0.0.0.MAGE_ALL])) || See(NearestEnemyOfType([0.0.0.CLERIC_ALL])) ||See(NearestEnemyOfType([0.0.0.BARD_ALL])) ||See(NearestEnemyOfType([0.0.0.DRUID_ALL])))
+$法系敌人(obj) OR(Class(obj,PALADIN_ALL) || Class(obj,DRUID_ALL) || Class(obj,CLERIC_ALL) || Class(obj,BARD_ALL) || Class(obj,MAGE_ALL) || Class(obj,SORCERER))
 $可驱散(obj) OR(StateCheck(obj,STATE_HASTED)||StateCheck(obj,STATE_MIRRORIMAGE)||CheckStatGT(obj,0,TRUE_SIGHT)||CheckStatGT(obj,0,STONESKINS)||CheckSpellState(obj,RESIST_FEAR)||CheckStatGT(obj,0,CLERIC_DEFENSIVE_HARMONY)||CheckStatGT(obj,0,CLERIC_CHAOTIC_COMMANDS)||CheckStatGT(obj,0,CLERIC_FREE_ACTION)||CheckStatGT(obj,0,WIZARD_FIRE_SHIELD)||CheckStatGT(obj,0,DEFENSIVE_MODIFIER)||CheckStatGT(obj,0,STRENGTH_MODIFIER))
 
 // SSS级敌人

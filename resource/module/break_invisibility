@@ -1,0 +1,9 @@
+// 破隐
+
+loop(i,1,6) {
+    if ($expired("true_visual") && $隐形(@<i>NOM)) {
+        #100
+        @RFS(@m,@真视)
+        $timer("true_visual",FIVE_ROUNDS)
+    }
+}

@@ -11,8 +11,6 @@ have HaveSpell
 @FS ForceSpell
 @AS ApplySpell
 @RFS ReallyForceSpell
-true True()
-false False()
 @m Myself
 @NEM NearestEnemyOf(Myself)
 @1NE NearestEnemyOf
@@ -196,6 +194,7 @@ false False()
 ~连锁随机3火球闪电 seq3rand_fb_lb
 ~连锁蛛网火球 seqwebfb
 ~随机移动 randomwalk
+~破隐 break_invisibility
 ~破幻影 break_phantom
 ~破沉默 break_silence
 ~破法术护盾 break_spellshield

@@ -14,8 +14,8 @@ public class LoopFunction extends AbstractFunction {
     /*
         grammar
 
-        loop(varname,from,to) {
-            ...<varname>
+        loop(name,from,to) {
+            ...<name>
         }
         例如
         @loop(i,1,6) {

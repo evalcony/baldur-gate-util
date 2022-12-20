@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Translator {
 
+    // 目前，语法检测有先后顺序
     private static AbstractFunction[] functions = {
             new LoopFunction(),
             new IfFunction(),

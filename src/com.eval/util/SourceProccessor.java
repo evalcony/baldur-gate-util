@@ -115,6 +115,10 @@ public class SourceProccessor {
     public static void read(Container container, String path) {
         try {
             container.rawLines = Files.readAllLines(Paths.get(path));
+
+            for (int i = 0; i < container.rawLines.size(); ++i) {
+                container.rawLines.set(i, container.rawLines.get(i).trim());
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return;

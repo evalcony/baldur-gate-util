@@ -118,7 +118,9 @@ public class IfFunction extends AbstractFunction {
         int cnt = 0;
         for (int i = conditionEndLine; i < sentences.size(); ++i) {
             if (sentences.get(i).contains("{")) {
-                statementStartLine = i;
+                if (cnt == 0) {
+                    statementStartLine = i;
+                }
                 cnt++;
             }
             else if (sentences.get(i).contains("}")) {
