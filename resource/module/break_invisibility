@@ -1,9 +1,15 @@
-// 破隐
+// 敌人可见性判断
 
-loop(i,1,6) {
-    if ($expired("true_visual") && $隐形(@<i>NOM)) {
-        #100
-        @RFS(@m,@真视)
+if ($无真视(@m)) {
+    #100
+    $timer("true_visual",0)
+    $c()
+}
+
+if ($expired("true_visual") && $敌方全体隐形判断()) {
+    #100
+    lock{
+        @FS(@m, @真视)
         $timer("true_visual",FIVE_ROUNDS)
     }
 }
