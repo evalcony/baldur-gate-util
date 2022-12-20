@@ -10,6 +10,7 @@ public class Translator {
     // 目前，语法检测有先后顺序
     private static AbstractFunction[] functions = {
             new LoopFunction(),
+            new ForeachFunction(),
             new IfFunction(),
             new OrFunction(),
             new MacroCmdFunction(),

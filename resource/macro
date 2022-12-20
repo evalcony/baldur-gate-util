@@ -19,7 +19,7 @@ $hpgt(obj,val) HPGT(obj,val)
 $hplt(obj,val) HPLT(obj,val)
 $hppgt(obj,val) HPPercentGT(obj,val)
 $hpplt(obj,val) HPPercentLT(obj,val)
-$randgt(v1, v2) RandomNumGT(v1,v2)
+$randgt(v1,v2) RandomNumGT(v1,v2)
 
 $display(val) DisplayString(Myself,val)
 

@@ -119,19 +119,24 @@ dict.txt文件中定义
 
 - loop 函数
 
+- lock 函数
+
+- foreach 函数
+
 
 ### 版本记录
 
 v0.3.6
 - 解决语法嵌套的问题
+- 实现 foreach 语法 ForeachFunction
 
 v0.3.5
-- 实现 Lock 语法
-- 实现 between 语法
+- 实现 lock 语法 LockFunction
+- 实现 between 语法 BetweenFunction
 - 修复若干 bug
 
 v0.3.4
-- 实现宏命令 MacroFunction
+- 实现宏命令 macro 语法 MacroFunction
 - 优化宏命令，简化语法
 - 修复模板解析的 bug
 

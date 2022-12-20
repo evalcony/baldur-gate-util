@@ -3,7 +3,7 @@
 
 if (See(@召唤物)) {
     #100
-    // $timer("clear_summon", ONE_ROUND)
+    $timer("clear_summon", ONE_ROUND)
 }
 
 if ($exist("clear_summon") && $randgt(20,10)) {
