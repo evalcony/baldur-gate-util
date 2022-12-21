@@ -4,6 +4,12 @@ visiable_<i> 第i个可见 eq=1
 visiable_atleast 至少有1个可见 eq=1
 visiable_all 全都可见 eq=1
 
+has_player_weapon 有使用武器的队友(需要breach破解防护)=1
+
+---------------------------------------
 // timer变量表
+
 true_visual 真视
 clear_summon 召唤物已清光=1
+
+goto_magic_attack 有必要用法术攻击(需要breach破解防护)=1

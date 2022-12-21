@@ -1,0 +1,13 @@
+// ai-法术战-防御破解
+// enemy_has_magic_prot 防护类法术【石皮、电抗、酸抗、火抗、冰抗、防魔武、防能量、防不死、防普通武器、防护普通远程、普通/高级/重击壁罩术】
+
+// 破解法术抵抗效果
+loop(i,1,6){
+    if (OR($eq("has_player_weapon",1) || $exist("goto_magic_attack"))
+    && have(@breach) && $不免疫法术等级(@<i>NOM,5) && $高级防护伤害(@<i>NOM)) {
+        #100
+        lock{
+            @S(@<i>NOM,@breach)
+        }
+    }
+}

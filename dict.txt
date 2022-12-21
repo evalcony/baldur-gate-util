@@ -1,5 +1,5 @@
 # RESPONSE #
-continue Continue()
+@NA() ActionListEmpty()
 @L "LOCALS"
 @!battle CombatCounter(0)
 @battle !CombatCounter(0)
@@ -7,6 +7,7 @@ have HaveSpell
 @remove RemoveSpell
 @last LastSeenBy(Myself)
 @看见敌人 See([enemy])
+@看见任何人 See([anyone])
 @S Spell
 @FS ForceSpell
 @AS ApplySpell
@@ -202,10 +203,11 @@ have HaveSpell
 ~连锁蛛网火球 seqwebfb
 ~随机移动 randomwalk
 ~破隐 break_invisibility
-~破幻影 break_phantom
+~破幻象 break_phantom
 ~破沉默 break_silence
 ~破法术护盾 break_spellshield
-~ai-法术战破魔 ai_magic_breach
+~ai-main ai_main
+~ai-法术战破魔 ai_breach_magic
 ~ai-战斗防护 ai_battle_protection
 ~ai-敌人数量判断 ai_enemy_num_judge
 ~ai-敌人多 ai_enemy_multy

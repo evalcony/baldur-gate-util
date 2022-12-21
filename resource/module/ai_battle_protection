@@ -2,32 +2,21 @@
 if (@看见敌人 && $无防魔武(@m) && have(@防魔武)) {
     #100
     @RFS(@m, @防魔武)
-    wait(2)
 }
 
-// 沉默
-if ($沉默(@m)) {
+~破沉默
+
+// 补石皮或拉开距离
+if (@看见敌人 && $range(@1NOM,6) && $无石皮(@m) && have(@石皮)) {
     #100
-    @RFS(@m, @发声)
-    wait(2)
+    @RFS(@m,@石皮)
 }
-
-// 补石皮
-if (@看见敌人 && $range(@1NOM,6) && $无石皮(@m)) {
-    #100
-    $timer("need_stoneskin",ONE_ROUND)
-    $c()
-}
-
-if ($exist("need_stoneskin") && have(@石皮)) {
-    #100
-    @RFS(@m, @石皮)
-    wait(2)
-    $timer("need_stoneskin",0)
-}
-
-if ($exist("need_stoneskin") && !have(@石皮)) {
+if (@看见敌人 && $range(@1NOM,6) && $无石皮(@m) && !have(@石皮)) {
     #100
     $run(@1NOM,90)
-    $timer("need_stoneskin",0)
+}
+
+if (@看见敌人 && $无镜影(@m) && have(@镜影)) {
+    #100
+    @RFS(@m, @镜影)
 }

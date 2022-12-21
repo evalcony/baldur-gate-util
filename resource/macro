@@ -20,6 +20,7 @@ $hplt(obj,val) HPLT(obj,val)
 $hppgt(obj,val) HPPercentGT(obj,val)
 $hpplt(obj,val) HPPercentLT(obj,val)
 $randgt(v1,v2) RandomNumGT(v1,v2)
+$lv(obj)
 
 $display(val) DisplayString(Myself,val)
 
@@ -69,6 +70,18 @@ $无真视(obj) !CheckStatGT(obj,0,TRUE_SIGHT)
 $防魔武(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
 $无防魔武(obj) !CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
 $无防护魔法能量(obj) CheckStatLT(obj,31,MAGICDAMAGERESISTANCE)
+$壁罩术(obj) CheckSpellState(obj,MANTLE)
+$高级壁罩术(obj) CheckSpellState(obj,IMPROVED_MANTLE)
+$终极壁罩术(obj) CheckSpellState(obj,ABSOLUTE_IMMUNITY)
+$火焰护盾(obj) CheckStatGT(obj,0,WIZARD_FIRE_SHIELD)
+$防护元素(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_THE_ELEMENTS)
+$防护魔法能量(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+$防护能量(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_ENERGY)
+$防护远程(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
+$防护普通武器(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_NORMAL_WEAPONS)
+$防护石化(obj) CheckStatGT(obj,0,WIZARD_PROTECTION_FROM_PETRIFICATION)
+$防护邪恶(obj) CheckStatGT(obj,0,PROTECTION_FROM_EVIL)
+$自由行动(obj) CheckStatGT(obj,0,CLERIC_FREE_ACTION)
 
 $!race(obj,rname) !Race(obj,rname)
 
@@ -87,11 +100,37 @@ $魔抗gt(obj,val) CheckStatGT(obj,val,RESISTMAGIC)
 
 // 常用组合
 $法免效果(obj) OR(HasBounceEffects(obj) || HasImmunityEffects(obj))
-$缺法术防护(obj) !HasBounceEffects(obj) && !HasImmunityEffects(obj)
+$缺法免效果(obj) !HasBounceEffects(obj) && !HasImmunityEffects(obj)
+$无效结界(obj) OR(CheckStat(obj,1,MINORGLOBE) || CheckStat(obj,1,SHIELDGLOBE))
 $优先级敌人(obj) OR(See(obj([ENEMY])) || See(obj([0.0.0.CLERIC_ALL])) || See(obj([0.0.0.MAGE_ALL])) || See(obj([0.0.0.SORCERER])))
 $正常施法(obj) CheckStatLT(obj,50,SPELLFAILUREMAGE) && !CheckStatGT(obj,0,CLERIC_INSECT_PLAGUE) && !StateCheck(obj,STATE_SILENCED)
 $干扰施法(obj) OR(CheckStatGT(obj,30,SPELLFAILUREMAGE) || CheckStatGT(obj,0,CLERIC_INSECT_PLAGUE) || StateCheck(obj,STATE_SILENCED))
-// WIZARD_SPELL_IMMUNITY 数值含义
+$不免疫法术等级(obj,lv) !ImmuneToSpellLevel(obj,lv)
+
+$次级无效结界(obj) CheckStat(obj,1,MINORGLOBE)
+$无效结界(obj) CheckStat(obj,1,SHIELDGLOBE)
+$法术偏转(obj) CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION)
+$法术反转(obj) CheckStatGT(obj,1,WIZARD_SPELL_TURNING)
+$亚琼立场(obj) CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS)
+$法术陷阱(obj) CheckStatGT(obj,0,WIZARD_SPELL_TRAP)
+$无法术陷阱(obj) !CheckStatGT(obj,0,WIZARD_SPELL_TRAP)
+
+// 法术护盾的效果一直无法被正确识别
+// $法术护盾(obj) CheckStatGT(obj,0,WIZARD_SPELL_SHIELD)
+// 法术防护一般也要和法术免疫组合使用
+$法术防护(obj) OR(CheckStat(obj,1,MINORGLOBE) || CheckStat(obj,1,SHIELDGLOBE) || CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION) || CheckStatGT(obj,1,WIZARD_SPELL_TURNING) || CheckStatGT(obj,0,WIZARD_SPELL_TRAP) || CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS))
+$无法术防护(obj) !CheckStat(obj,1,MINORGLOBE) && !CheckStat(obj,1,SHIELDGLOBE) && !CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION) && !CheckStatGT(obj,1,WIZARD_SPELL_TURNING) && !CheckStatGT(obj,0,WIZARD_SPELL_TRAP) && !CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS)
+// 根据防护级别的高低划分
+$L1防护伤害(obj) OR($石皮(obj) || $防魔武(obj) || $高级壁罩术(obj) || $终极壁罩术(obj) || $火焰护盾(obj) || $防护能量(obj))
+$L2防护伤害(obj) OR($壁罩术(obj) || $防护魔法能量(obj) || $防护远程(obj) || $防护普通武器(obj))
+$L3防护伤害(obj) OR($防护石化(obj) || 防护邪恶(obj))
+// 根据防护伤害的类型划分[武器、法术]
+$防护武器伤害(obj) OR($石皮(obj) || $防魔武(obj) || $壁罩术(obj) || $高级壁罩术(obj) || $终极壁罩术(obj) || $防护远程(obj) || $防护普通武器(obj) || $火焰护盾(obj))
+$防护魔法伤害(obj) OR($防护元素(obj) || $火焰护盾(obj) || $防护魔法能量(obj) || $防护能量(obj))
+
+$抗性很高
+
+// WIZARD_SPELL_IMMUNITY 法术免疫数值含义
 //  1-防护系
 //	2-咒法/召唤系
 //	3-预言系
@@ -100,11 +139,32 @@ $干扰施法(obj) OR(CheckStatGT(obj,30,SPELLFAILUREMAGE) || CheckStatGT(obj,0,
 //	6-塑能系
 //	7-死灵系
 //	8-改变系
-$法术防护(obj,val) !CheckStatGT(obj,1,WIZARD_SPELL_DEFLECTION) && !CheckStatGT(obj,1,WIZARD_SPELL_TURNING) && !CheckStatGT(obj,0,WIZARD_SPELL_TRAP) && !CheckStat(obj,1,CLERIC_SHIELD_OF_THE_ARCHONS) && !CheckStat(obj,val,WIZARD_SPELL_IMMUNITY)
+//--有法免防护
+$法免:防护(obj) CheckStat(obj,1,WIZARD_SPELL_IMMUNITY)
+$法免:咒法(obj) CheckStat(obj,2,WIZARD_SPELL_IMMUNITY)
+$法免:预言(obj) CheckStat(obj,3,WIZARD_SPELL_IMMUNITY)
+$法免:附魔(obj) CheckStat(obj,4,WIZARD_SPELL_IMMUNITY)
+$法免:幻术(obj) CheckStat(obj,5,WIZARD_SPELL_IMMUNITY)
+$法免:塑能(obj) CheckStat(obj,6,WIZARD_SPELL_IMMUNITY)
+$法免:死灵(obj) CheckStat(obj,7,WIZARD_SPELL_IMMUNITY)
+$法免:改变(obj) CheckStat(obj,8,WIZARD_SPELL_IMMUNITY)
+//---无法免防护
+$无法免:防护(obj) !CheckStat(obj,1,WIZARD_SPELL_IMMUNITY)
+$无法免:咒法(obj) !CheckStat(obj,2,WIZARD_SPELL_IMMUNITY)
+$无法免:预言(obj) !CheckStat(obj,3,WIZARD_SPELL_IMMUNITY)
+$无法免:附魔(obj) !CheckStat(obj,4,WIZARD_SPELL_IMMUNITY)
+$无法免:幻术(obj) !CheckStat(obj,5,WIZARD_SPELL_IMMUNITY)
+$无法免:塑能(obj) !CheckStat(obj,6,WIZARD_SPELL_IMMUNITY)
+$无法免:死灵(obj) !CheckStat(obj,7,WIZARD_SPELL_IMMUNITY)
+$无法免:改变(obj) !CheckStat(obj,8,WIZARD_SPELL_IMMUNITY)
+
 $看见召唤物(val) OR(See([EVILCUTOFF.0.0.0.0.SUMMONED]) || See([EVILCUTOFF.WEAPON.SWORD.0.0.SUMMONED]) || See([EVILCUTOFF.0.MIST.0.0.SUMMONED]) || NumCreatureGT([EVILCUTOFF.0.0.0.0.SUMMONED],val))
 $看见法系敌人() OR(See(NearestEnemyOfType([0.0.0.MAGE_ALL])) || See(NearestEnemyOfType([0.0.0.CLERIC_ALL])) ||See(NearestEnemyOfType([0.0.0.BARD_ALL])) ||See(NearestEnemyOfType([0.0.0.DRUID_ALL])))
-$法系敌人(obj) OR(Class(obj,PALADIN_ALL) || Class(obj,DRUID_ALL) || Class(obj,CLERIC_ALL) || Class(obj,BARD_ALL) || Class(obj,MAGE_ALL) || Class(obj,SORCERER))
+$是法系敌人(obj) OR(Class(obj,PALADIN_ALL) || Class(obj,DRUID_ALL) || Class(obj,CLERIC_ALL) || Class(obj,BARD_ALL) || Class(obj,MAGE_ALL) || Class(obj,SORCERER))
 $可驱散(obj) OR(StateCheck(obj,STATE_HASTED)||StateCheck(obj,STATE_MIRRORIMAGE)||CheckStatGT(obj,0,TRUE_SIGHT)||CheckStatGT(obj,0,STONESKINS)||CheckSpellState(obj,RESIST_FEAR)||CheckStatGT(obj,0,CLERIC_DEFENSIVE_HARMONY)||CheckStatGT(obj,0,CLERIC_CHAOTIC_COMMANDS)||CheckStatGT(obj,0,CLERIC_FREE_ACTION)||CheckStatGT(obj,0,WIZARD_FIRE_SHIELD)||CheckStatGT(obj,0,DEFENSIVE_MODIFIER)||CheckStatGT(obj,0,STRENGTH_MODIFIER))
+
+// TODO
+$无异常状态(obj) true()
 
 // SSS级敌人
 $SSSrace(obj) OR(Race([DRAGON]) || Race([LICH]) || Race([DEMONIC] || Race([BEHOLDER])))

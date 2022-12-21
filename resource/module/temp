@@ -1,15 +1,32 @@
 
+// 破解法术防护效果
 
-
-
-// 真视破幻影
-
-loop(i,1,4){
-    if (OR($cast(@<i>NOT([0.0.0.MAGE_ALL]),@误导) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@暗影门) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@投影) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@隐形术) ||  $cast(@<i>NOT([0.0.0.MAGE_ALL]),@高隐) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@拟象) || $cast(@<i>NOT([0.0.0.MAGE_ALL]),@镜影))) {
-        #100
-        lock{
-            @S(@m, @真视)
-            $timer("true_visual",FIVE_ROUNDS)
+loop(i,1,6){
+    foreach(spl,[@法术重击,@识破护盾,@凯尔本,@识破魔法,@密言,@法穿]){
+        if (@看见敌人 && $法术防护(@<i>NOM) && have(<spl>) && $无法免:防护(@<i>NOM)){
+            #100
+            lock{
+                @S(@<i>NOM,<spl>)
+            }
         }
     }
 }
+loop(i,1,6){
+    foreach(spl,[@密言,@法穿]){
+        if (@看见敌人 && $不免疫法术等级(@<i>NOM,4) && $法术防护(@<i>NOM) && have(@密言) && $无法免:防护(@<i>NOM)){
+            #100
+            lock{
+                @S(@<i>NOM,@密言)
+            }
+        }
+    }
+}
+loop(i,1,6){
+    if (@看见敌人 && $不免疫法术等级(@<i>NOM,3) && $法术防护(@<i>NOM) && have(@法穿) && $无法免:防护(@<i>NOM)){
+        #100
+        lock{
+            @S(@<i>NOM,@法穿)
+        }
+    }
+}
+
