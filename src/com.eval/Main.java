@@ -1,7 +1,6 @@
 package com.eval;
 
 import com.eval.util.SourceProccessor;
-import com.eval.util.Translator;
 
 public class Main {
 

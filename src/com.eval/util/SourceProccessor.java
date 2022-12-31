@@ -11,14 +11,14 @@ public class SourceProccessor {
     private static String BASE_PATH = "resource/";
     private static List<Dict> dictList = new ArrayList<>();
 
-    public static Map<String, String> getDict() {
-        return dictList.get(2).getSource();
-    }
     public static Map<String, String> getIds() {
         return dictList.get(0).getSource();
     }
     public static Map<String, Container> getModuleDict() {
         return dictList.get(1).getSource();
+    }
+    public static Map<String, String> getDict() {
+        return dictList.get(2).getSource();
     }
     public static Map<String, String> getMacroCmdBlock() {
         return (Map<String, String>) dictList.get(3).getSource().get("cmd");
