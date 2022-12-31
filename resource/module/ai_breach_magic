@@ -50,7 +50,7 @@ loop(i,1,6){
 
 
 loop(i,1,6){
-    if (@NA() && @看见敌人 && $expired("whip_<i>") && $无法术陷阱(@<i>NOM) && have(@密言) && $不免疫法术等级(@<i>NOM,5)  && $法术防护(@<i>NOM)){
+    if (@NA() && @看见敌人 && $expired("whip_<i>") && $无法术陷阱(@<i>NOM) && have(@密言) && $不免疫法术等级(@<i>NOM,5) && $法术防护(@<i>NOM)){
         #100
         lock{
             @S(@<i>NOM,@密言)

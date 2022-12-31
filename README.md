@@ -1,4 +1,4 @@
-# Baldur's Gate 脚本编辑工具
+# Baldur's Gate Scripting Helper (博德之门脚本编辑工具)
 ===============
 
 ### 介绍

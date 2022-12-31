@@ -11,5 +11,6 @@ has_player_weapon 有使用武器的队友(需要breach破解防护)=1
 
 true_visual 真视
 clear_summon 召唤物已清光=1
+whip_<i> 凯尔本守护之鞭
 
 goto_magic_attack 有必要用法术攻击(需要breach破解防护)=1
