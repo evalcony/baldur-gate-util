@@ -94,7 +94,15 @@ public class Translator {
 
     private String repl(String source) {
         String line = source;
+        // dict
         for (Map.Entry<String, String> p : SourceProccessor.getDict().entrySet()) {
+            if (line.contains(p.getKey())) {
+                String r = line.replace(p.getKey(), p.getValue());
+                line = r;
+            }
+        }
+        // resource/ids/...
+        for (Map.Entry<String, String> p : SourceProccessor.getIds().entrySet()) {
             if (line.contains(p.getKey())) {
                 String r = line.replace(p.getKey(), p.getValue());
                 line = r;

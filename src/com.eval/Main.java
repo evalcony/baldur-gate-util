@@ -24,11 +24,11 @@ public class Main {
 
         Container container = new Container();
         // 加载脚本
-        SourceProccessor.read(container, inputPath);
+        SourceProccessor.readInput(container, inputPath);
         // 翻译脚本
         Translator.getInstance().translate(container);
         // 输出脚本
-        SourceProccessor.write(container, outputPath);
+        SourceProccessor.writeOutput(container, outputPath);
 
         System.out.println("执行结束");
     }
