@@ -13,7 +13,7 @@ if ($exist("num_uni") && hpgt(@1NOM, 20)) {
 }
 
 loop(i,1,2) {
-    if($exist("num_uni") && hplt(@<i>NOM, 20)) {
+    if($exist("num_uni") && $hplt(@<i>NOM, 20)) {
         #100
         $timer("quick_kill_<i>", ONE_ROUND)
     }

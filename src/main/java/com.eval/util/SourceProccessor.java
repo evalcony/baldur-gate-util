@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SourceProccessor {
-    private static String BASE_PATH = "resource/";
+    private String BASE_PATH = getBasePath();
     private static List<Dict> dictList = new ArrayList<>();
 
     public static Map<String, String> getIds() {
@@ -27,7 +27,7 @@ public class SourceProccessor {
         return (Map<String, String>) dictList.get(3).getSource().get("replace");
     }
 
-    public static void loadResources(String dictPath) {
+    public void loadResources(String dictPath) {
         dictList.add(new IdsDict(BASE_PATH+"ids/"));
         dictList.add(new ModuleDict(BASE_PATH+"module/"));
         dictList.add(new UserDefineDict(dictPath));
@@ -39,11 +39,17 @@ public class SourceProccessor {
     }
 
 
-    public static void readInput(Container container, String path) {
+    public void readInput(Container container, String path) {
         new FileProcessor().read(container, path);
     }
 
-    public static void writeOutput(Container container, String path) {
+    public void writeOutput(Container container, String path) {
         new FileProcessor().write(container, path);
+    }
+
+    public String getBasePath() {
+        String root = this.getClass().getClassLoader().getResource("").getPath();//注意getResource("")里面是空字符串
+        System.out.println(root);
+        return root;
     }
 }

@@ -22,6 +22,8 @@ $hpplt(obj,val) HPPercentLT(obj,val)
 $randgt(v1,v2) RandomNumGT(v1,v2)
 $lv(obj)
 
+$use(obj,val) UseItem(val,obj)
+
 $display(val) DisplayString(Myself,val)
 
 $敌对() Allegiance(Myself,ENEMY)

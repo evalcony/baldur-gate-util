@@ -37,9 +37,9 @@ public class FileProcessor {
         }
     }
 
-    public List<String> readNameList(String basePath) {
+    public List<String> readNameList(String path) {
         List<String> nameList = new ArrayList<>();
-        String[] array = new File(basePath).list();
+        String[] array = new File(path).list();
         for (int i = 0; i < array.length; ++i) {
             nameList.add(array[i]);
         }
@@ -61,4 +61,5 @@ public class FileProcessor {
             e.printStackTrace();
         }
     }
+
 }

@@ -18,16 +18,17 @@ public class Main {
         String outputPath = "output.txt";
         String dictPath = "dict.txt";
 
+        SourceProccessor sourceProccessor = new SourceProccessor();
         // 加载资源文件
-        SourceProccessor.loadResources(dictPath);
+        sourceProccessor.loadResources(dictPath);
 
         Container container = new Container();
         // 加载脚本
-        SourceProccessor.readInput(container, inputPath);
+        sourceProccessor.readInput(container, inputPath);
         // 翻译脚本
         Translator.getInstance().translate(container);
         // 输出脚本
-        SourceProccessor.writeOutput(container, outputPath);
+        sourceProccessor.writeOutput(container, outputPath);
 
         System.out.println("执行结束");
     }

@@ -186,10 +186,10 @@ have HaveSpell
 @闪电术 WIZARD_LIGHTNING_BOLT
 @火焰箭 WIZARD_FLAME_ARROW
 @毁灭魔剑 WIZARD_BLACK_BLADE_OF_DISASTER
-@hp1 TROLL_SETHP1
 @治疗严重伤害 CLERIC_CURE_SERIOUS_WOUNDS
 @药水 "POTN08"
 @强力药水 "POTN52"
+@超级药水 "POTN55"
 @持续反击 Attack(LastAttackerOf(Myself))
 @近战一轮 AttackReevaluate(NearestEnemyOf(Myself),15)
 @恶魔 DEMONIC
@@ -204,7 +204,7 @@ have HaveSpell
 ~连锁3骷髅 seq3skeleton
 ~连锁随机3火球闪电 seq3rand_fb_lb
 ~连锁蛛网火球 seqwebfb
-~随机移动 randomwalk
+~随机移动 random_walk
 ~破隐 break_invisibility
 ~破幻象 break_phantom
 ~破沉默 break_silence
@@ -217,3 +217,4 @@ have HaveSpell
 ~ai-敌人少 ai_enemy_uni
 ~ai-清理召唤物 ai_clear_summon
 ~一键设置 一键设置
+~法师战斗AI01 wizard_battle_01

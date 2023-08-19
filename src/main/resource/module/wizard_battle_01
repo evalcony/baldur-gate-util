@@ -1,0 +1,13 @@
+// 法师战斗脚本
+if ($hpplt(@m,50) && $expired("random_walk")) {
+    #100
+    @RFS(@m,@高隐)
+    $timer("random_walk",1)
+    $c()
+}
+
+if ($exist("random_walk")) {
+    #100
+    $display(1000)
+    ~随机移动
+}
