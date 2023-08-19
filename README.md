@@ -9,7 +9,7 @@
 启动命令：
 控制台输入以下命令，即可完成脚本替换。
 ```
-java -jar baldur-gate-util.jar input.txt output.txt dict.txt
+java -jar baldur-gate-util.jar
 ```
 
 重要概念和相关说明

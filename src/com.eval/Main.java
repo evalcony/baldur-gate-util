@@ -5,18 +5,18 @@ import com.eval.util.SourceProccessor;
 public class Main {
 
     public static void main(String[] args) {
-        if (args == null || args.length != 3) {
-            System.out.println("缺失启动参数 参考readme.txt");
-            return;
-        }
+//        if (args == null || args.length != 3) {
+//            System.out.println("缺失启动参数 参考readme.txt");
+//            return;
+//        }
+//
+//        if (args != null && args.length > 0) {
+//            System.out.println("程序启动参数：" + args[0] + " " + args[1] +" " + args[2]);
+//        }
 
-        if (args != null && args.length > 0) {
-            System.out.println("程序启动参数：" + args[0] + " " + args[1] +" " + args[2]);
-        }
-
-        String inputPath = args[0];
-        String outputPath = args[1];
-        String dictPath = args[2];
+        String inputPath = "input.txt";
+        String outputPath = "output.txt";
+        String dictPath = "dict.txt";
 
         // 加载资源文件
         SourceProccessor.loadResources(dictPath);
