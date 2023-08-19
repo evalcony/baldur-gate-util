@@ -114,14 +114,46 @@ dict.txt文件中定义
 9. 保留函数
 
 - if 函数
+```
+if (cond1) {
+    #100
+    执行代码
+}
+
+if (cond1 && cond2) {
+    #100
+    执行代码
+}
+```
 
 - or 函数
+```
+if (cond1 || OR(cond2) || OR(cond3)) {
+    ...
+}
+```
 
 - loop 函数
 
+```
+loop (index,1,5) {
+    @RFS(<index>NOM,@火球术)
+}
+```
+
 - lock 函数
+```
+lock{
+    需要完整执行的代码
+}
+```
 
 - foreach 函数
+```
+foreach(token,[tk1,tk2,tk3]){
+    @RFS(@NEM,<token>)
+}
+```
 
 
 ### 版本记录

@@ -33,6 +33,7 @@ have HaveSpell
 @4NOT FourthNearestEnemyOfType
 @5NOT FifthNearestEnemyOfType
 @6NOT SixthNearestEnemyOfType
+@敲击 WIZARD_KNOCK
 @发声 WIZARD_VOCALIZE
 @加速 WIZARD_HASTE
 @高加 WIZARD_IMPROVED_HASTE
@@ -185,6 +186,7 @@ have HaveSpell
 @闪电术 WIZARD_LIGHTNING_BOLT
 @火焰箭 WIZARD_FLAME_ARROW
 @毁灭魔剑 WIZARD_BLACK_BLADE_OF_DISASTER
+@hp1 TROLL_SETHP1
 @治疗严重伤害 CLERIC_CURE_SERIOUS_WOUNDS
 @药水 "POTN08"
 @强力药水 "POTN52"
