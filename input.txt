@@ -1,4 +1,1 @@
-if ($checkGT(@m,0,@法术护盾)) {
-    #100
-    RandomWalk()
-}
+~一键设置

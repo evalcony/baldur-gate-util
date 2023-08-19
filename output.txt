@@ -1,6 +1,41 @@
+// 一键执行若干操作
+
+// 骷髅海+魔邓肯
 IF
-CheckStatGT(Myself,0,WIZARD_SPELL_SHIELD)
+HotKey(x)
 THEN
-    RESPONSE #100
-    RandomWalk()
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_MORDENKAINENS_SWORD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_HASTE)
+END
+
+// 一键上防护
+IF
+HotKey(z)
+THEN
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_BLUR)
+ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)
+ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
+ReallyForceSpell(Myself,WIZARD_GLOBE_OF_INVULNERABILITY)
+ReallyForceSpell(Myself,WIZARD_SPELL_SHIELD)
+ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_ALTERATION)
+ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_NECROMANCY)
+ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_ENCHANTMENT)
+ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY_INVOCATION)
+ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES)
+ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_ENERGY)
+END
+
+// 法免
+IF
+HotKey(o)
+THEN
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_SPELL_IMMUNITY)
 END

@@ -8,6 +8,7 @@ have HaveSpell
 @last LastSeenBy(Myself)
 @看见敌人 See([enemy])
 @看见任何人 See([anyone])
+@key HotKey
 @S Spell
 @FS ForceSpell
 @AS ApplySpell
@@ -213,3 +214,4 @@ have HaveSpell
 ~ai-敌人多 ai_enemy_multy
 ~ai-敌人少 ai_enemy_uni
 ~ai-清理召唤物 ai_clear_summon
+~一键设置 一键设置
