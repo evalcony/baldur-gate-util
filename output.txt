@@ -1,33 +1,62 @@
-// 法师战斗脚本
+//wizard_battle_01
+//quick_key
+// 艾德温-咒法师脚本
+
+// 4级召唤-蜘蛛海
 IF
-HPPercentLT(Myself,50)
-!GlobalTimerNotExpired("random_walk","LOCALS")
+HotKey(q)
 THEN
 RESPONSE #100
-ReallyForceSpell(Myself,WIZARD_IMPROVED_INVISIBILITY)
-SetGlobalTimer("random_walk","LOCALS",1)
-Continue()
+ReallyForceSpell(Myself,WIZARD_SPIDER_SPAWN)
+ReallyForceSpell(Myself,WIZARD_SPIDER_SPAWN)
+ReallyForceSpell(Myself,WIZARD_SPIDER_SPAWN)
+ReallyForceSpell(Myself,WIZARD_SPIDER_SPAWN)
+ReallyForceSpell(Myself,WIZARD_SPIDER_SPAWN)
+ReallyForceSpell(Myself,WIZARD_HASTE)
 END
 
+// 5级召唤骷髅海
 IF
-GlobalTimerNotExpired("random_walk","LOCALS")
+HotKey(x)
 THEN
 RESPONSE #100
-DisplayString(Myself,1000)
-RESPONSE #12
-MoveToOffset([-30.0])
-RESPONSE #12
-MoveToOffset([0.30])
-RESPONSE #12
-MoveToOffset([30.0])
-RESPONSE #12
-MoveToOffset([0.-30])
-RESPONSE #12
-MoveToOffset([30.30])
-RESPONSE #12
-MoveToOffset([-30.30])
-RESPONSE #12
-MoveToOffset([30.-30])
-RESPONSE #12
-MoveToOffset([-30.30])
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_ANIMATE_DEAD)
+ReallyForceSpell(Myself,WIZARD_HASTE)
+END
+
+// 7级召唤
+IF
+HotKey(w)
+THEN
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_SUMMON_EFREET)
+ReallyForceSpell(Myself,WIZARD_SUMMON_HAKEASHAR)
+ReallyForceSpell(Myself,WIZARD_SUMMON_DJINNI)
+ReallyForceSpell(Myself,WIZARD_WYVERN_CALL)
+ReallyForceSpell(Myself,WIZARD_WYVERN_CALL)
+END
+
+// 8级召唤-狂魔
+IF
+HotKey(t)
+THEN
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_SUMMON_FIEND)
+ReallyForceSpell(Myself,WIZARD_SUMMON_FIEND)
+ReallyForceSpell(Myself,WIZARD_SUMMON_FIEND)
+ReallyForceSpell(Myself,WIZARD_SUMMON_FIEND)
+ReallyForceSpell(Myself,WIZARD_SUMMON_FIEND)
+ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_EVIL)
+END
+
+// 9级召唤-神侍
+IF
+HotKey(u)
+THEN
+RESPONSE #100
+ReallyForceSpell(Myself,WIZARD_SUMMON_PLANATAR_GOOD)
 END

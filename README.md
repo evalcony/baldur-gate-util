@@ -120,19 +120,40 @@ if (cond1 && cond2) {
 ```
 
 - or 函数
+只用于 IF 语句
 ```
-if (cond1 || OR(cond2) || OR(cond3)) {
+if (cond1 && OR(cond2 || cond3)) {
+    #100
     ...
 }
 ```
+效果为
+```
+IF
+    cond1
+    OR
+        cond2
+        cond3
+    RESPONSE 100
+        ...
+
+```
 
 - loop 函数
+用于对大括号内的代码段重复执行
 
 ```
 loop (index,1,5) {
-    @RFS(<index>NOM,@火球术)
+    @RFS(@<index>NOM,@火球术)
 }
 ```
+效果为：
+@RFS(@1NOM,@火球术)
+@RFS(@2NOM,@火球术)
+@RFS(@2NOM,@火球术)
+@RFS(@3NOM,@火球术)
+@RFS(@3NOM,@火球术)
+
 
 - lock 函数
 ```
@@ -142,10 +163,17 @@ lock{
 ```
 
 - foreach 函数
+用于对大括号内的代码段，依次替换[] 中的元素
 ```
 foreach(token,[tk1,tk2,tk3]){
     @RFS(@NEM,<token>)
 }
+```
+效果为：
+```
+@RFS(@NEM,tk1)
+@RFS(@NEM,tk2)
+@RFS(@NEM,tk3)
 ```
 
 
