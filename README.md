@@ -127,9 +127,8 @@ if (cond1 && OR(cond2 || cond3)) {
     #100
     ...
 }
-```
+
 效果为
-```
 IF
     cond1
     OR
@@ -148,14 +147,13 @@ THEN
 loop (index,1,5) {
     @RFS(@<index>NOM,@火球术)
 }
-```
+
 效果为：
-```
 @RFS(@1NOM,@火球术)
 @RFS(@2NOM,@火球术)
-@RFS(@2NOM,@火球术)
 @RFS(@3NOM,@火球术)
-@RFS(@3NOM,@火球术)
+@RFS(@4NOM,@火球术)
+@RFS(@5NOM,@火球术)
 ```
 
 - lock 函数
@@ -179,10 +177,9 @@ lock{
 foreach(token,[tk1,tk2,tk3]){
     @RFS(@NEM,<token>)
 }
-```
 
 效果为：
-```
+
 @RFS(@NEM,tk1)
 @RFS(@NEM,tk2)
 @RFS(@NEM,tk3)
